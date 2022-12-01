@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- CSS used only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>URL SHORTNER</h1>
+
+      <button
+        class="btn btn-primary"
+        type="button"
+        onclick="location.href='/report' "
+      >
+        Report
+      </button>
+
+      <button
+        class="btn btn-primary"
+        type="button"
+        onclick="location.href='/manage' "
+      >
+        Manage Category
+      </button>
+
+      <form action="/shortUrls" method="post" class="my-4 form-inline">
+        <label for="fullUrl">Url</label>
+        <input
+          type="url"
+          name="fullUrl"
+          required
+          placeholder="original url"
+          id="fullUrl"
+          class="form-control mr-2"
+        />
+        <button class="btn btn-primary">Shrink</button>
+      </form>
+
+      <table
+        class="table table-stripped table-bordered table-primary table-responsive"
+      >
+        <thead>
+          <tr>
+            <th>Pin</th>
+            <th>Original URL</th>
+            <th>Short Url</th>
+            <th>Count</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% shortUrls.forEach (shortUrl=>{ %>
+
+          <tr>
+            <td><%=shortUrl.pin%></td>
+
+            <td><a href="<%=shortUrl.original%>"><%=shortUrl.original%></a></td>
+
+            <td><a href="<%=shortUrl.short%>"><%=shortUrl.short%></a></td>
+
+            <td><%=shortUrl.count%></td>
+
+
+
+
+
+            <td>
+              
+              <label for="Select category  "
+                ><select name="" id="">
+                  <option value=""><%=shortUrl.category %> shortUrl.category</option>
+                </select></label
+              >
+            </td>
+          </tr>
+
+          <%})%>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
